@@ -1,0 +1,30 @@
+.container {
+    margin-top: 50px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin-top: 20px;
+  }
+  
+  img {
+    border-radius: 8px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 8px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  

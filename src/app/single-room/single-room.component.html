@@ -1,0 +1,19 @@
+<div *ngFor="let hotel of hotels" class="room-card">
+
+
+    <h2>{{ hotel.hotelName }}</h2>
+
+    <img [src]="hotel.imageUrl" alt="Room Image" class="room-image" />
+    <p>{{ hotel.location }}</p>
+    <p>Rating: {{ hotel.rating }}</p>
+    <p>Amenities: {{ hotel.amenities }}</p>
+    <p>
+      Price: ₹{{ hotel.price }}
+      <span *ngIf="hotel.discount"> ({{ hotel.discount }}% off)</span>
+    </p>
+    <button class="btn btn-info" [routerLink]="['/roomdetails', hotel.id]">View Details</button>
+    <button class="btn btn-success">Book Now</button>
+
+    
+  </div>
+  

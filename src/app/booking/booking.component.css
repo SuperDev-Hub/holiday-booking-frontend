@@ -1,0 +1,11 @@
+.card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card-link:hover .card {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
