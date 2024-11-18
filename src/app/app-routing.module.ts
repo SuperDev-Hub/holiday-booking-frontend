@@ -6,6 +6,7 @@ import { SingleRoomComponent } from './single-room/single-room.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { RoomDetailsComponent } from './roomdetails/roomdetails.component';
+import { BookingDetailsComponent } from './bookingdetails/bookingdetails.component';
 
 // Define routes for the Home and Booking components
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },              
   { path: 'booking', component: BookingComponent },
   { path: 'roomdetails/:id', component: RoomDetailsComponent },
-  { path: 'single room', component: SingleRoomComponent }        
+  { path: 'single room', component: SingleRoomComponent },
+  { path: 'bookingdetails/:id', component: BookingDetailsComponent }        
 ];
 
 @NgModule({

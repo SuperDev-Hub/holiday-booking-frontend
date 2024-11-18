@@ -1,35 +1,55 @@
 <div *ngIf="room">
-    <!-- Hotel Name -->
-    <h2>{{ room.hotelName }}</h2>
-  
-    <!-- Hotel Image -->
-    <img [src]="room.imageUrl" alt="Room Image" class="room-image" />
-  
-    <!-- Hotel Location -->
-    <p><strong>Location:</strong> {{ room.location }}</p>
-  
-    <!-- Hotel Rating -->
-    <p><strong>Rating:</strong> {{ room.rating }} / 5</p>
-  
-    <!-- Hotel Amenities -->
-    <p><strong>Amenities:</strong> {{ room.amenities }}</p>
-  
-    <!-- Hotel Price and Discount -->
-    <p><strong>Price:</strong> ₹{{ room.price }}</p>
-    <p *ngIf="room.discount"><strong>Discount:</strong> {{ room.discount }}% off</p>
-  
-    <!-- Hotel Details -->
-    <h3>More Details</h3>
-    <p>Here you can add more detailed information about the room, such as room size, bed type, availability, etc.</p>
-  
-    <!-- Book Now Button -->
-    <button class="btn btn-success" (click)="bookRoom()">Book Now</button>
-  </div>
-  
-  <!-- Show a loading message if the room data is not yet loaded -->
-  <div *ngIf="!room" class="loading">
-    <p>Loading room details...</p>
-  </div>
-  
+  <!-- Hotel Name -->
+  <h2>{{ room.hotelName }}</h2>
 
- 
+  <!-- Hotel Image -->
+  <img [src]="room.imageUrl" alt="Room Image" class="room-image" />
+
+  <!-- Hotel Location -->
+  <p><strong>Location:</strong> {{ room.location }}</p>
+
+  <!-- Hotel Rating -->
+  <p><strong>Rating:</strong> {{ room.rating }} / 5</p>
+
+  <!-- Hotel Amenities -->
+  <p><strong>Amenities:</strong> {{ room.amenities }}</p>
+
+  <!-- Hotel Price and Discount -->
+  <p><strong>Price:</strong> ₹{{ room.price }}</p>
+  <p *ngIf="room.discount"><strong>Discount:</strong> {{ room.discount }}% off</p>
+
+
+  <h3>Reviews</h3>
+
+  <!-- Review Form -->
+  <div class="review-form">
+    <textarea [(ngModel)]="newReview" placeholder="Write your review here..." rows="3"></textarea>
+    <button class="btn btn-primary" (click)="submitReview()">Submit Review</button>
+  </div>
+
+  <!-- Reviews List -->
+  <div *ngIf="reviews && reviews.length > 0; else noReviews">
+    <div class="review" *ngFor="let review of reviews">
+      <p><strong>{{ review.userName }}</strong>: {{ review.comment }}</p>
+      <small>Posted on: {{ review.date | date:'short' }}</small>
+      <hr />
+    </div>
+  </div>
+
+  <!-- No Reviews Placeholder -->
+  <ng-template #noReviews>
+    <p>No reviews yet. Be the first to review!</p>
+  </ng-template>
+</div>
+
+<!-- Show a loading message if the room data is not yet loaded -->
+<div *ngIf="!room" class="loading">
+  <p>Loading room details...</p>
+</div>
+
+
+
+
+
+
+

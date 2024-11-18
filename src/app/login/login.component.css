@@ -1,0 +1,47 @@
+/* Center the container on the page */
+.container {
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .login-container {
+    max-width: 400px;
+    width: 100%; /* Full width for responsiveness */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+  }
+  
+  button {
+    font-size: 16px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  p {
+    color: #555;
+  }
+  
+  a {
+    color: #007bff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #0056b3;
+  }
+  

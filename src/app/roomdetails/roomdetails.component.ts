@@ -8,7 +8,10 @@ import { RoomService } from '../roomservice.service';  // Your service to fetch 
   styleUrls: ['./roomdetails.component.css']
 })
 export class RoomDetailsComponent implements OnInit {
-  room: any;  // Use any for plain JavaScript object
+  room: any; // Room details
+  reviews: any[] = []; // Reviews for the room
+  newReview: string = ''; // For two-way binding of new review text
+  roomId: number | null = null; // Room ID from the route
 
   constructor(
     private route: ActivatedRoute,
@@ -16,19 +19,59 @@ export class RoomDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const roomId = +this.route.snapshot.paramMap.get('id')!;  // Get the room ID from the URL
-    this.roomService.getRoomById(roomId).subscribe(
-      (data: any) => {  // Directly receive plain object data
-        this.room = data;  // Store the room data
+    // Get the room ID from the URL
+    this.roomId = +this.route.snapshot.paramMap.get('id')!;
+    if (this.roomId) {
+      this.fetchRoomDetails(this.roomId);
+      this.fetchRoomReviews(this.roomId);
+    }
+  }
+
+  // Fetch room details from the backend
+  fetchRoomDetails(id: number): void {
+    this.roomService.getRoomById(id).subscribe(
+      (data: any) => {
+        this.room = data;
       },
-      (      error: any) => {
+      (error: any) => {
         console.error('Error fetching room details:', error);
       }
     );
   }
 
-  // Method to handle booking logic (you can expand this as needed)
-  bookRoom() {
-    console.log('Room booked:', this.room?.hotelName);
+  // Fetch reviews for the room from the backend
+  fetchRoomReviews(id: number): void {
+    this.roomService.getRoomReviews(id).subscribe(
+      (data: any[]) => {
+        this.reviews = data;
+      },
+      (error: any) => {
+        console.error('Error fetching reviews:', error);
+      }
+    );
+  }
+
+  // Submit a new review
+  submitReview(): void {
+    if (this.newReview.trim() && this.roomId) {
+      const review = {
+        userName: 'Current User', // Replace with actual logged-in user's name
+        comment: this.newReview,
+        date: new Date(),
+        roomId: this.roomId, // Attach the room ID for reference
+      };
+
+      this.roomService.postRoomReview(review).subscribe(
+        (response: any) => {
+          this.reviews.push(review); // Add the new review to the list
+          this.newReview = ''; // Clear the input field
+        },
+        (error: any) => {
+          console.error('Error posting review:', error);
+        }
+      );
+    }
   }
 }
+
+

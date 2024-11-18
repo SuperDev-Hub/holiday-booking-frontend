@@ -1,19 +1,44 @@
-<div *ngFor="let hotel of hotels" class="room-card">
+<div class="container mt-5">
+  <h1 class="text-center mb-4 text-primary">Explore Our Hotels</h1>
 
+  <div class="row">
+    <div *ngFor="let hotel of hotels" class="col-md-4 mb-4">
+      <div class="room-card card shadow-lg">
+        <!-- Hotel Image -->
+        <img [src]="hotel.imageUrl" alt="Room Image" class="card-img-top room-image" />
 
-    <h2>{{ hotel.hotelName }}</h2>
+        <div class="card-body">
+          <!-- Hotel Name -->
+          <h5 class="card-title text-center">{{ hotel.hotelName }}</h5>
 
-    <img [src]="hotel.imageUrl" alt="Room Image" class="room-image" />
-    <p>{{ hotel.location }}</p>
-    <p>Rating: {{ hotel.rating }}</p>
-    <p>Amenities: {{ hotel.amenities }}</p>
-    <p>
-      Price: ₹{{ hotel.price }}
-      <span *ngIf="hotel.discount"> ({{ hotel.discount }}% off)</span>
-    </p>
-    <button class="btn btn-info" [routerLink]="['/roomdetails', hotel.id]">View Details</button>
-    <button class="btn btn-success">Book Now</button>
+          <!-- Location -->
+          <p class="text-muted text-center"><i class="bi bi-geo-alt"></i> {{ hotel.location }}</p>
 
-    
+          <!-- Rating -->
+          <p class="text-warning text-center">
+            <i class="bi bi-star-fill"></i> Rating: {{ hotel.rating }}
+          </p>
+
+          <!-- Amenities -->
+          <p class="card-text"><strong>Amenities:</strong> {{ hotel.amenities }}</p>
+
+          <!-- Price and Discount -->
+          <p class="card-text">
+            <strong>Price:</strong> ₹{{ hotel.price }}
+          
+          </p>
+
+          <!-- Buttons for View Details and Book Now -->
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-info btn-sm" [routerLink]="['/roomdetails', hotel.id]">
+              View Details
+            </button>
+            <button class="btn btn-success btn-sm" [routerLink]="['/bookingdetails', hotel.id]">
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
+</div>

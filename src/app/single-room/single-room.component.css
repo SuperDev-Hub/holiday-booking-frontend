@@ -1,30 +1,44 @@
-.container {
-    margin-top: 50px;
-  }
-  
-  h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  h3 {
-    margin-top: 20px;
-  }
-  
-  img {
-    border-radius: 8px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin-bottom: 8px;
-  }
-  
-  button {
-    margin-top: 20px;
-  }
-  
+/* General Card Styling */
+.room-card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.room-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Room Image Styling */
+.room-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Card Body Customization */
+.card-body {
+  background-color: #f9f9f9;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Price and Discount */
+.card-text {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Center Align Text */
+.text-center {
+  text-align: center;
+}
+
+/* Spacing Between Buttons */
+.d-flex button {
+  margin: 0 5px;
+}

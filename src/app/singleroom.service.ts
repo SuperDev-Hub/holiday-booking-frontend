@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SingleRoomService {
   private apiUrl = 'http://localhost:8085/api/single-rooms';
-
+    //  private apiUrl = 'http://localhost:8090/api/single-rooms';
   constructor(private http: HttpClient) {}
 
   getHotels(): Observable<any> {
